@@ -15,7 +15,7 @@ reg [23:0] counter;
 always @(posedge sys_clk or negedge sys_res_n) begin
     if (!sys_res_n)
         counter <= 24'd0;
-    else if (counter < 24'd1000_0000)
+    else if (counter < 24'd10)
         counter <= counter + 1'b1;
     else
         counter <= 24'd0;
@@ -25,7 +25,7 @@ end
 always @(posedge sys_clk or negedge sys_res_n) begin
     if (!sys_res_n)
         led <= 4'b0001;
-    else if (counter == 24'd1000_0000) begin
+    else if (counter == 24'd10) begin
         led <= {led[2:0], led[3]}; // 使用非阻塞赋值
     end
 end
